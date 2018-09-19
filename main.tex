@@ -1,0 +1,144 @@
+%
+%   Tom Richter
+%   auf Basis einer Vorlage von Dr. Julian Reichwald und Prof. Dr. Jörg Baumgart
+%
+%	ACHTUNG: Für das Erstellen des Literaturverzeichnisses wird das modernere Paket biblatex
+%			 in Kombination mit biber verwendet -- nicht mehr das ältere BibTex!
+% 			 Bitte stellen Sie ggf. Ihre TeX-Umgebung
+% 			 entsprechend ein (z.B. TeXStudio: Einstellungen --> Erzeugen --> Standard Bibliographieprogramm: biber)
+%
+
+\documentclass[
+	12pt, % defaut=12
+	BCOR=5mm,F
+	DIV=12, % ca 3.5cm margins % default=12
+	headinclude=on,
+	footinclude=off,
+	parskip=half,
+	bibliography=totoc,
+	listof=entryprefix,
+	toc=listof,
+	number=noenddot,
+	plainfootsepline]{scrreprt}
+	
+%	Konfigurationsdateien einbinden
+\input{config/config}
+\input{config/code}
+%   Settings laden
+\input{config/settings}
+
+%-----------------------------------
+%		Glossary
+%-----------------------------------
+\makeglossaries
+\input{adds/glossary}
+	
+\begin{document}
+
+\singlespacing
+
+%   Titlepage
+\input{adds/titlepage}
+
+\pagenumbering{Roman} % Römische Seitennummerierung
+\normalfont
+
+%----------------------------------------
+% Verzeichnisse - nicht benötige Verzeichnisse bitte auskommentieren / löschen.
+%----------------------------------------
+
+\onehalfspacing
+\pagestyle{scrheadings}
+%   Sperrvermerk
+\input{adds/nondisclosurenotice}
+
+\onehalfspacing
+\pagestyle{scrheadings}
+
+% Ehrenwörtliche Erklärung
+\input{adds/declarationonhonour}
+
+\singlespacing
+\pagestyle{scrheadings}
+%	Kurzfassung
+\input{adds/abstract}
+
+\onehalfspacing
+\pagestyle{scrheadings}
+
+% Vorangehende Notizen
+\input{adds/preliminarynotes}
+
+\singlespacing
+
+%	Inhaltsverzeichnis
+\begingroup
+\renewcommand*{\chapterpagestyle}{scrheadings}
+\pagestyle{scrheadings}
+\tableofcontents
+\clearpage
+\endgroup
+
+\pagestyle{scrheadings}
+
+%	Abbildungsverzeichnis
+\listoffigures
+
+%	Tabellenverzeichnis
+\listoftables
+
+%	Listingsverzeichnis
+\lstlistoflistings
+
+% 	Algorithmenverzeichnis
+\listofalgorithms
+
+%   Symbolverzeichnis
+\input{adds/symbols}
+
+% 	Abkürzungsverzeichnis (siehe Datei acronyms.tex!)
+\input{adds/acronyms}
+
+%----------------------------------------
+% Start des Textteils der Arbeit
+%----------------------------------------
+\clearpage
+\ihead{\chaptername~\thechapter} % Neue Header-Definition
+\pagenumbering{arabic}  % Arabische Seitenzahlen
+
+\onehalfspacing
+\pagestyle{scrheadings}
+
+%Einzelne Kapitel können hier eingefügt werden.
+%Es ist vorgesehen alle Kapitel als eigene Dateien
+\input{content/01Instruction}
+
+%	Literaturverzeichnis
+\ihead{} % Neue Header-Definition
+% \printbibliography
+\printbibheading
+% \printbibliography[nottype=online, nottype=misc, notkeyword=image, notkeyword=reference, heading=subbibliography, title={Publication Sources}]
+% \printbibliography[type=online, notkeyword=image, notkeyword=reference, heading=subbibliography, title={Online Sources}]
+% \printbibliography[type=misc, keyword=image, heading=subbibliography, title={Image Sources}]
+% \printbibliography[type=misc, keyword=reference, heading=subbibliography, title={Reference Sources}]
+\printbibliography[notkeyword=image, heading=subbibliography, title={Sources}]
+\printbibliography[type=misc, keyword=image, heading=subbibliography, title={Image Sources}]
+\clearpage
+
+
+% 	Glossaries
+\printglossaries
+\clearpage
+
+
+%----------------------------------------
+% Anhang
+% Hier können alle Anhänge als einzelne Datei eingefügt werden.
+% Die Anhänge werden gesondert alphabethisch benannt (A Anhang 1, B Anhang 2, usw)
+%----------------------------------------
+\appendix
+\ihead{\appendixname~\thechapter} % Neue Header-Definition
+
+\input{appendix/interview}
+
+\end{document}

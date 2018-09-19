@@ -1,0 +1,260 @@
+% !TEX root = ../main.tex
+
+%-------------------
+% 		HYPERREF
+%-------------------
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    % allcolors = [rgb]{0,0,0} % black
+    allcolors = [rgb]{0,0,0.4} % blue
+}
+
+% URLs im Fließtext
+\newcommand{\urlinline}[1]{\textsf{\footnotesize{\url{{#1}}}}}
+
+
+%		TITLING
+%-----------------------------------
+\makeatletter
+\newcommand*{\thetitle}{\@title}
+\newcommand*{\theauthor}{\@author}
+\newcommand*{\thedate}{\@date}
+\newcommand*{\place}[1]{\newcommand{\theplace}{#1}}
+\newcommand*{\thesis}[1]{\newcommand{\thethesis}{#1}}
+\newcommand*{\university}[1]{\newcommand{\theuniversity}{#1}}
+\newcommand*{\courseofstudies}[1]{\newcommand{\thecourseofstudies}{#1}}
+\newcommand*{\timeperiod}[1]{\newcommand{\thetimeperiod}{#1}}
+\newcommand*{\studentnr}[1]{\newcommand{\thestudentnr}{#1}}
+\newcommand*{\course}[1]{\newcommand{\thecourse}{#1}}
+\newcommand*{\company}[1]{\newcommand{\thecompany}{#1}}
+\newcommand*{\supervisor}[1]{\newcommand{\thesupervisor}{#1}}
+\newcommand*{\scientificsupervisor}[1]{\newcommand{\thescientificsupervisor}{#1}}
+\makeatother
+
+% PDF settings
+\hypersetup{pdftitle={\thetitle}}
+\hypersetup{pdfauthor={\theauthor}}
+
+
+%-------------------
+% 		List Styles
+%-------------------
+\usepackage{enumitem}
+\usepackage{lineno}
+
+
+%-------------------------
+%		SCHRIFTART
+%-------------------------
+% Entweder Latin Modern oder Times / Helvetica
+\usepackage{lmodern} %Latin modern font
+%\usepackage{mathptmx}  %Helvetica / Times New Roman fonts (2 lines)
+%\usepackage[scaled=.92]{helvet} %Helvetica / Times New Roman fonts (2 lines)
+
+
+%-----------------------------------
+%		SCHRIFT UND ENCODING
+%-----------------------------------
+\usepackage[T1]{fontenc}
+
+\usepackage{eurosym} % euro symbol
+\DeclareRobustCommand{\officialeuro}{%
+  \ifmmode\expandafter\text\fi
+  {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
+  
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{20AC}{\euro} % Euro symbol character
+
+\usepackage{setspace}
+
+% Common abbreviation's
+\usepackage{xspace}
+\AtBeginDocument{
+    \newcommand*{\eg}{e.g.\@\xspace}
+    \newcommand*{\ie}{i.e.\@\xspace}
+    \newcommand*{\Eg}{E.g.\@\xspace}
+    \newcommand*{\Ie}{I.e.\@\xspace}
+    \newcommand*{\cf}{cf.\@\xspace}
+    \newcommand*{\Cf}{Cf.\@\xspace}
+}
+
+
+%---------------------------
+%		BERECHNUNGEN
+%---------------------------
+\usepackage{calc} % Used for extra space below footsepline
+
+
+%-------------------------
+%		TABLES
+%-------------------------
+\usepackage[table,xcdraw]{xcolor}
+
+
+%---------------------------------
+%		SPRACHEINSTELLUNGEN
+%---------------------------------
+% Voreinstellungen für Deutsch und Englisch. Die nicht verwendete Sprache ist auszukommentieren.
+% DEUTSCH
+%\usepackage[ngerman]{babel}
+%\usepackage[german=quotes]{csquotes}
+
+% ENGLISH
+%\usepackage[ngerman]{babel}
+%\usepackage[german=quotes]{csquotes}
+
+%ENGLISH & DEUTSCH (default english)
+\usepackage[english, ngerman]{babel}
+\usepackage[style=american]{csquotes} % Richtiges Setzen der Anführungszeichen mit \enquote{}
+\AtBeginDocument{
+    \selectlanguage{english}
+}
+
+
+%----------------------------
+%		BIBLIOGRAFIE
+%----------------------------
+\AtBeginDocument{
+    \setcounter{biburllcpenalty}{7000} % break urls
+    \setcounter{biburlucpenalty}{8000} % break urls
+}
+% Voreinstellungen für Fußnotenzitate (Autor-Jahr), IEEE-Standard, Alphabetic-Stil und Havard-Stil. Die nicht verwendeten Stile müssen auskommentiert werden
+
+%\usepackage[backend=biber, autocite=footnote, style=authoryear, dashed=false]{biblatex}                % Fußnotenzitate
+% \usepackage[backend=biber, autocite=inline, style=ieee]{biblatex}                                     % IEEE-Stil
+% \usepackage[backend=biber, autocite=inline, style=alphabetic]{biblatex}                               % Alphabetic-Stil
+% \usepackage[backend=biber, autocite=inline, style=authoryear, dashed=false]{biblatex}		            % Harvard-Stil
+\usepackage[backend=biber, autocite=inline, bibstyle=authoryear, citestyle=apa, dashed=false]{biblatex} % APA-Stil
+
+
+% Fußnotenzitate mit YYYY-MM-DD in Bibliographie
+% \usepackage[backend=biber, autocite=footnote, style=authoryear, dashed=false, urldate=edtf, date=edtf, seconds=true]{biblatex}
+
+\DefineBibliographyStrings{ngerman}{  %Change u.a. to et al. (german only!)
+	andothers = {{et\,al\adddot}},
+}
+
+\setlength{\bibparsep}{\parskip}		%add some space between biblatex entries in the bibliography
+\addbibresource{adds/bibliography.bib}	%Add file bibliography.bib as biblatex resource
+
+
+%----------------------
+%		ACRONYME
+%----------------------
+%%%
+%%% WICHTIG: Installieren Sie das neueste Acronyms-Paket!!!
+%%%
+\makeatletter
+\usepackage[]{acronym}
+\@ifpackagelater{acronym}{2015/03/20}
+  {%
+    \renewcommand*{\aclabelfont}[1]{\textbf{\textsf{\acsfont{#1}}}}
+  }%
+  {%
+  }%
+\makeatother
+
+
+%--------------------
+%		GLOSSAR
+%--------------------
+%\usepackage[toc]{glossaries}					% für Seitenreferenzen im Glossar
+\usepackage[toc, nonumberlist]{glossaries}		% ohne Seitenreferenzen im Glossar
+
+
+%--------------------
+%		NUMBERING FIGURES/TABLES/FOOTNOTES/TOC/CHAPTERS
+%--------------------
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter} % Zum Zählen der Fußnoten über Kapitel hinaus
+% \counterwithin{figure}{section} % Zum Zählen der Bilder innerhalb von Sections
+% \counterwithin{table}{section} % Zum Zählen der Tabellen innerhalb von Sections
+\setcounter{tocdepth}{2} % TODO adapt if toc too long
+\setcounter{secnumdepth}{2} % Numbering for subsubsections
+
+
+%-----------------------------------
+%		REFERENCES & CITING
+%-----------------------------------
+% \usepackage{letltxmacro}
+% \AtBeginDocument{
+%     \LetLtxMacro{\originalref}{\ref}
+%     \renewcommand{\ref}[1]{(\cf~\originalref{#1}, p.~\pageref{#1})}
+%     \newcommand{\imgref}[1]{(\cf~figure~\originalref{#1}, p.~\pageref{#1})}
+% }
+
+
+%-------------------------------
+%		ZUSÄTZLICHE PAKETE
+%-------------------------------
+\usepackage{lipsum}				 % Blindtext
+\setlipsumdefault{1-4}
+
+\usepackage[activate]{microtype} % fix overfull hbox
+\usepackage[pdftex]{graphicx}    % verschiene Bildformate einbinden
+\usepackage{pdfpages}            % PDF einbinden
+\usepackage[format=hang, justification=raggedright, margin=1cm, singlelinecheck=false]{caption}			% schönere Überschriften
+
+\usepackage{booktabs}			% bessere Tabs
+\usepackage{array}
+
+% bessere Tabellen
+\usepackage{multirow}
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.5}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% resource folder einbinden
+\graphicspath{ {resources/} }
+
+
+%--------------------------
+%		Tikz diagram library
+%--------------------------
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations.pathmorphing,backgrounds,fit,positioning,shapes.symbols,chains}
+
+%--------------------------
+%		TpX used packages
+%--------------------------
+\usepackage{color}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg,.mps}
+\usepackage{pgf}
+\usepackage{epic,bez123}
+\usepackage{floatflt}% package for floatingfigure environment
+\usepackage{wrapfig}% package for wrapfigure environment
+
+%-------------------------
+%		ALGORITHMEN
+%-------------------------
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\renewcommand{\listalgorithmname}{List of Algorithms}
+\floatname{algorithm}{algorithm}
+
+%------------------------------------
+%		KOPFZEILE / FUßZEILE
+%------------------------------------
+%	   ACHTUNG! Einige einstellungen werden in master.tex erneut verändert
+\RequirePackage[automark,headsepline,footsepline]{scrpage2}
+\pagestyle{scrheadings}
+\renewcommand*{\pnumfont}{\upshape\sffamily}
+\renewcommand*{\headfont}{\upshape\sffamily}
+\renewcommand*{\footfont}{\upshape\sffamily}
+\renewcommand{\chaptermarkformat}{}
+
+\clearscrheadfoot
+
+% using cfoot centers the header
+% use ofoot for outer side, especially with documentclass[twoside]
+\cfoot[\rule{0pt}{\ht\strutbox+\dp\strutbox}\pagemark]{\rule{0pt}{\ht\strutbox+\dp\strutbox}\pagemark}
+
+\ohead{\headmark}
+
+%-----------------------------------
+%		Fix Headheight
+%-----------------------------------
+\setlength{\headheight}{1.1\baselineskip}
+

@@ -1,0 +1,64 @@
+% !TEX root = ../main.tex
+
+%---------------------
+%		LISTINGS
+%---------------------
+\usepackage{listings}
+\usepackage{dirtree}
+% Listings formatieren
+\renewcommand{\lstlistlistingname}{List of Listings}
+	
+\lstdefinelanguage{Typescript} {
+    keywords={
+        break, const, continue, delete, do, get, set, while, for, in, of, function, async, await, if, else, in, instanceOf, label, let, new, return, try, catch, then, typeof, var, void, with, yield, string, true, false
+    },
+    ndkeywords={class, interface, export, extends, throw, implements, import, from, as, this, switch, case, public, private},
+    sensitive=false,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]",
+    morestring=[d]',
+    morestring=[d]`
+}
+
+\lstdefinelanguage{json}{
+    string=[s]{"}{"},
+    comment=[l]{:}
+}
+
+\lstdefinelanguage{reqTimeline}{
+    comment=[l]{|}
+}
+
+\definecolor{LinkColor}{HTML}{00007A}
+\definecolor{CadetBlue}{HTML}{5f9ea0}
+\definecolor{OliveGreen}{HTML}{556b2f}
+\definecolor{Gray}{HTML}{808080}
+\definecolor{LightGray}{HTML}{d3d3d3}
+
+\lstset{
+    basicstyle=\footnotesize\ttfamily,
+    numbers=left,
+	stepnumber=1,
+	numbersep=5pt,
+	numberstyle=\tiny,
+	tabsize=2,
+	showspaces=false,
+	extendedchars=true,
+	literate={€}{{\euro}}1,
+	captionpos=b,
+    showstringspaces=false,
+    breaklines=true,
+	breakautoindent=true,
+	postbreak=\space,		
+    keywordstyle=\ttfamily\bfseries\color{CadetBlue},
+    ndkeywordstyle=\ttfamily\bfseries\color{LinkColor},
+    identifierstyle=\ttfamily,
+    stringstyle=\ttfamily\color{OliveGreen},
+    commentstyle=\color{Gray},
+    frame=tb,
+    framesep=5pt,
+    rulecolor=\color{LightGray},
+    aboveskip=1cm,
+    % belowskip=1cm
+}

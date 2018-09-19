@@ -1,0 +1,161 @@
+% !TEX root = ../main.tex
+\chapter{Gebrauchsanleitung}
+
+\section{Übersicht über die Vorlage}
+Die Vorlage wurde im UTF-8 Encoding erstellt. Sollten daher z.\,B. Umlaute in Ihrem \LaTeX-Editor nicht korrekt dargestellt werden, überprüfen Sie bitte die Encoding-Einstellungen des Editors. In seltenen Fällen müssen Sie die Vorlage danach noch einmal neu in den Editor einbinden.
+Die Vorlage beinhaltet die folgenden, in Tabelle \ref{tab:dateien} aufgelisteten Dateien:
+
+\begin{table}[H]
+	\centering
+    \begin{tabular}{lp{10cm}}
+    	\textbf{Dateiname} & \textbf{Beschreibung}\\\toprule
+    	\texttt{main.tex} & Die Hauptdatei. Alle anderen Dateien werden von dieser Datei eingezogen. \\
+    	\texttt{abstract.tex} & Die Kurzfassung der Arbeit. \\
+    	\texttt{acronyms.tex} & Definition von Abkürzungen. \\
+    	\texttt{declarationonhonours.tex} & Ehrenwörtliche Erklärung.\\
+    	\texttt{glossary.tex} & Glossar. \\
+    	\texttt{nondisclosurenotice.tex} & Sperrvermerk.\\
+    	\texttt{symbols.tex} & Definition von Symbolen.\\
+    	\texttt{titlepage.tex} & Titelseite der Arbeit.\\
+    	\texttt{code.tex} & Konfigurationseinstellungen von Code Listings.\\
+    	\texttt{config.tex} & Konfigurationseinstellungen der einzelnen Pakete.\\
+    	\texttt{settings.tex} & Persönliche Daten der Arbeit.\\
+    	\texttt{01Introduction.tex} & Diese Anleitung.\\
+    	\texttt{bibliography.bib} &  Die Literaturdatenbank -- hier können Sie die verwendete Literatur einpflegen.\\\bottomrule
+    \end{tabular}
+    \caption{Übersicht über die Dateien der Vorlage}
+    \label{tab:dateien}
+\end{table}
+
+Es werden -- unter anderem -- die folgenden Zusatzpakete von dieser Vorlage eingezogen und sollten daher in aktuellen Versionen installiert sein:
+\begin{itemize}
+	\item\texttt{KOMA-Script} bzw. die Dokumentenklasse \texttt{scrreprt}
+	\item\texttt{hyperref} für PDF-Informationen und Links
+	\item \texttt{babel} für länderspezifische Einstellungen
+	\item \texttt{csquotes} für sprachabhängige Anführungszeichen (Befehl: \texttt{\textbackslash enquote})
+	\item \texttt{acronym} für das Erstellen des Abkürzungsverzeichnisses
+	\item \texttt{booktabs} für das typografisch schöne Setzen von Tabellen
+	\item \texttt{listings} für schöne Quelltexte
+	\item \texttt{algorithm} für schöne Algorithmen
+	\item \texttt{bibltatex} und \texttt{biber} für die Erstellung des Literaturverzeichnisses.
+\end{itemize}
+Alle Konfigurationen dieser Vorlage können in der Datei \texttt{config.tex} eingesehen und ggf. verändert werden. Bitte schauen Sie sich die entsprechenden Dokumentationen
+der Pakete an (\url{https://www.ctan.org}), um deren Verwendung und Möglichkeiten jenseits der hier gezeigten Beispiele zu erlernen.
+
+
+\section{Übersetzung von \LaTeX-Dateien}
+Die Übersetzung von \LaTeX-Dateien erfolgt in mehreren Schritten und unter der Zuhilfenahme unterschiedlicher Programme. Das Hauptdokument (hier die Datei \texttt{main.tex}) wird mittels \texttt{pdflatex} zu einem PDF übersetzt. Ggf. ist eine mehrfache Übersetzung notwendig, um z.\,B. das Inhaltsverzeichnis korrekt darzustellen.
+
+Für die Einbindung des Literaturverzeichnisses wird nicht mehr das ältere \texttt{bibtex}, sondern das neuere \texttt{biber} in Kombination mit \texttt{biblatex} verwendet. Bitte stellen Sie Ihren \LaTeX-Editor so ein, dass die Verwendung von Biber beim Übersetzungsprozess erfolgt.
+
+\section{Verwendung von Akronymen}
+Akronyme müssen in der Datei \texttt{acronyms.tex} definiert werden (schauen Sie sich hierzu bitte die entsprechende Paket-Dokumentation an!) Ein definiertes Akronym kann dann mit dem Befehl \texttt{\textbackslash ac} verwenden, so wird z.\,B. \texttt{\textbackslash ac\{DHBW\}} zu \ac{DHBW}. Im weiteren Verlauf wird das Acronym dann nur noch in der Kurzform dargestellt: \ac{DHBW}. Die Aufnahme eines verwendeten Akronyms in das Abkürzungsverzeichnis erfolgt automatisch.
+
+\section{Zitieren von Quellen}
+Mit dem Befehl \texttt{\textbackslash autocite} kann zitiert werden, z.\,B. so \autocite[Vgl.][S. 18ff.]{astm2012AM}. Sollen mehrere Referenzen auf einmal gesetzt werden, können Sie dies mit dem Befehl \texttt{\textbackslash autocites} erreichen, z.\,B. so\autocites[Vgl.][S. 10]{astm2012AM}[][S. 100]{reddy2016AM}. Wird \texttt{autocite} konsequent verwendet, kann in der Datei \texttt{config.tex} der Zitationsstil umgeschaltet werden, ohne dass im Text Veränderungen vorgenommen werden müssen. Vorkonfigurierte Stile sind Alphabetic, Harvard, Fußnotenzitat, IEEE, und APA-Style. Die Übernahme der Quellen in das Literaturverzeichnis erfolgt automatisch. Ein Beispiel für eine Online-Quelle ist ebenfalls enthalten.\autocite[Vgl.][]{3mfconsortium2018adoption}
+
+Soll einer Abbildung eine Quellenangabe zugefügt werden, bietet es sich an, diese direkt in der jeweiligen Abbildungsbeschriftung zu hinterlegen. Hierfür kann der Befehl \texttt{\textbackslash cite} verwendet werden, um eine ungewollte Fußnote zu vermeiden. Ein Beispiel ist in Abbildung \ref{fig:test} zu sehen.
+
+
+\section{Text in Anführungszeichen}
+Soll ein Text in Anführungszeichen gesetzt werden, kann dies über den Befehl \texttt{\textbackslash enquote} \enquote{so erreicht werden}. Die Anführungszeichen ändern sich automatisch auf die jeweiligen Länderspezifika, wenn die Spracheinstellung des \texttt{babel}-Pakets geändert wird. Voreinstellung ist die amerikanische Verwendung von Anführungszeichen.
+
+
+\section{Beispiele}
+\lipsum[1]
+
+\subsection{Unterabschnitte}
+Es gibt neben \texttt{\textbackslash chapter} auch noch  \texttt{\textbackslash section}, \texttt{\textbackslash subsection}, \texttt{\textbackslash subsubsection} etc. Eine zu starke Untergliederung des Textes sollte jedoch vermieden werden (z.\,B. ein Abschnitt 3.4.2.5.3).
+
+\subsection{Tabellen und Abbildungen}
+Tabellen und Abbildungen sind sogenannte \textit{Floating Objects}, d.\,h. \LaTeX\ setzt diese Objekte an Positionen, die satztechnisch geeignet sind. Daher kann es vorkommen, dass Tabellen oder Abbildungen auf einer anderen Seite erscheinen, die dann referenziert werden müssen. Hier ein Beispiel dafür:
+
+\LaTeX~ kümmert sich darum, wo die Abbildungen gesetzt werden und passt den Text der Referenz entsprechend an. Soll nur die Nummerierung in den Text geschrieben werden, dann kann der Befehl \texttt{\textbackslash ref} verwendet werden. Abbildungen sollten -- falls möglich -- als Vektor-PDF eingebunden werden, da die diese dann beliebig skalieren können.
+
+\lipsum[1]
+
+\begin{table}
+	\centering
+	\begin{tabular}{p{3cm}crl}
+		\textbf{Spalte 1} & \textbf{Spalte 2} & \textbf{Spalte 3} & \textbf{Spalte 4}\\\toprule
+		Zeile 1 Spalte 1 &  Zeile 1 Spalte 2 & Zeile 1 Spalte 3 & Zeile 1 Spalte 4\\
+		Zeile 2 Spalte 2 &  Zeile 2 Spalte 2 & Zeile 2 Spalte 3 & Zeile 2 Spalte 4\\\midrule
+		Zeile 3 Spalte 1 &  Zeile 3 Spalte 2 & Zeile 3 Spalte 3 & Zeile 3 Spalte 4\\
+		Zeile 4 Spalte 1 &  Zeile 4 Spalte 2 & Zeile 4 Spalte 3 & Zeile 4 Spalte 4\\\bottomrule
+	\end{tabular}
+	\caption[Testtabelle]{Testtabelle}
+	\label{tab:tabelle1}
+\end{table}
+\lipsum[1-2]
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{dhbw_logo.png}
+	\captionsetup{format=hang}
+	\caption[Optionaler Kurztitel für das Abbildunggsverzeichnis]{Demo-Abbildung, um zu verdeutlichen, wie gleitende Objekte gesetzt werden und wie entsprechend die Quelle zitiert wird. \\Quelle: \cite{imgmj}}
+	\label{fig:test}
+\end{figure}
+
+\subsection{Listings}
+
+Das Einbinden eines Listings mit der entsprechenden Umgebung ist auch kein Problem, wie man in Listing \ref{lst:helloworld} sehen kann. Schauen Sie sich hierzu das \texttt{listings}-Paket an!
+
+\begin{lstlisting}[language=Java, caption={Hello World!}, label={lst:helloworld}]
+public static void main(String args[]) {
+   System.out.println("Hello World!");
+}
+\end{lstlisting}
+
+
+\subsection{Mathematische Formeln}
+Auch mathematische Ausdrücke können mit \LaTeX~ sehr gut gesetzt werden, wie man anhand der Gleichung \ref{eqn:e2} sehen kann -- konsultieren Sie hierzu bitte entsprechende Dokumentationen, die Online zur Verfügung stehen.
+
+\begin{equation}
+f(x)=x^2
+\label{eqn:e2}
+\end{equation}
+
+\begin{figure}
+\begin{equation}
+f(x)=x^2
+\end{equation}
+\caption{Quadratic Function}
+\end{figure}
+
+
+\subsection{Algorithmen}
+Algorithmen können als Pseudocodes dargestellt und referenziert werden, wie z.\,B. in Algorithmus \ref{alg:euclid} -- sogar bis auf Zeilennummern
+(siehe die \texttt{while}-Anweisung in Zeile \ref{alg:euclid:while}). Schauen Sie sich hierzu bitte das Paket \texttt{algorithmicx} an.
+
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\Procedure{Euclid}{$a,b$}\Comment{The g.c.d. of a and b}
+   \State $r\gets a\bmod b$
+   \While{$r\not=0$}\Comment{We have the answer if r is 0} \label{alg:euclid:while}
+      \State $a\gets b$
+      \State $b\gets r$
+      \State $r\gets a\bmod b$
+   \EndWhile\label{euclidendwhile}
+   \State \textbf{return} $b$\Comment{The gcd is b}
+\EndProcedure
+\end{algorithmic}
+\caption{Euklid'scher Algorithmus}\label{alg:euclid}
+\end{algorithm}
+
+
+\subsection{Glossar}
+Der \gls{glossar} wird automatisch erzeugt und zeigt alle referenzierten Glossareinträge an. Um einen neuen Glossareintrag zu erstellen verwendet man den Befehl\\ \texttt{\textbackslash newglossaryentry\{<label>\}\{<settings>\}}.
+
+Ein erstellter Glossareintrag kann mit folgenden befehlen referenziert werden:
+\begin{table}[h!]
+	\centering
+	\caption[Glossar Befehle]{\label{tab:glossarTabelle}Glossar Befehle}
+	\begin{tabular}{lp{10cm}}
+		\textbf{Befehl} & \textbf{Effekt}\\\hline
+		\texttt{\textbackslash gls\{<label>\}} & Referenziert den angegebenen Begriff und erstellt einen Link zum Glossareintrag.\\
+		\texttt{\textbackslash glspl\{<label>\}} & Referenziert den Plural des angegebenen Begriffs falls vorhanden und erstellt einen Link zum Glossareintrag.\\
+		\texttt{\textbackslash Gls\{<label>\}} & Referenziert den angegebenen Begriff mit großem Anfangsbuchstaben und erstellt einen Link zum Glossareintrag\\
+		\texttt{\textbackslash Glspl\{<label>\}} & Referenziert den Plural des angegebenen Begriffs mit großem Anfangsbuchstaben falls vorhanden und erstellt einen Link zum Glossareintrag.\\\hline
+	\end{tabular}
+\end{table}
