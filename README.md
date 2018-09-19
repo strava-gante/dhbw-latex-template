@@ -14,37 +14,41 @@ Gebrauchsanleitung
 Die Vorlage wurde im UTF-8 Encoding erstellt. Sollten daher z.B. Umlaute in Ihrem LaTeX-Editor nicht korrekt dargestellt werden, überprüfen Sie bitte die Encoding-Einstellungen des Editors. In seltenen Fällen müssen Sie die Vorlage danach noch einmal neu in den Editor einbinden. Die Vorlage beinhaltet die folgenden aufgelisteten Dateien:
 
   `main.tex`                   Die Hauptdatei. Alle anderen Dateien werden von dieser Datei eingezogen.
+  
   `abstract.tex`               Die Kurzfassung der Arbeit.
+  
   `acronyms.tex`               Definition von Abkürzungen.
+  
   `declarationonhonours.tex`   Ehrenwörtliche Erklärung.
+  
   `glossary.tex`               Glossar.
+  
   `nondisclosurenotice.tex`    Sperrvermerk.
+ 
   `symbols.tex`                Definition von Symbolen.
+  
   `titlepage.tex`              Titelseite der Arbeit.
+  
   `code.tex`                   Konfigurationseinstellungen von Code Listings.
+  
   `config.tex`                 Konfigurationseinstellungen der einzelnen Pakete.
+  
   `settings.tex`               Persönliche Daten der Arbeit.
+  
   `01Introduction.tex`         Diese Anleitung.
+  
   `bibliography.bib`           Die Literaturdatenbank – hier können Sie die verwendete Literatur einpflegen.
 
 Es werden – unter anderem – die folgenden Zusatzpakete von dieser Vorlage eingezogen und sollten daher in aktuellen Versionen installiert sein:
 
 -   `KOMA-Script` bzw. die Dokumentenklasse `scrreprt`
-
 -   `hyperref` für PDF-Informationen und Links
-
 -   `babel` für länderspezifische Einstellungen
-
 -   `csquotes` für sprachabhängige Anführungszeichen (Befehl: `enquote`)
-
 -   `acronym` für das Erstellen des Abkürzungsverzeichnisses
-
 -   `booktabs` für das typografisch schöne Setzen von Tabellen
-
 -   `listings` für schöne Quelltexte
-
 -   `algorithm` für schöne Algorithmen
-
 -   `bibltatex` und `biber` für die Erstellung des Literaturverzeichnisses.
 
 Alle Konfigurationen dieser Vorlage können in der Datei `config.tex` eingesehen und ggf. verändert werden. Bitte schauen Sie sich die entsprechenden Dokumentationen der Pakete an (<https://www.ctan.org>), um deren Verwendung und Möglichkeiten jenseits der hier gezeigten Beispiele zu erlernen.
@@ -97,7 +101,7 @@ Das Einbinden eines Listings mit der entsprechenden Umgebung ist auch kein Probl
 
 Auch mathematische Ausdrücke können mit LaTeX  sehr gut gesetzt werden, wie man anhand der Gleichung [eqn:e2] sehen kann – konsultieren Sie hierzu bitte entsprechende Dokumentationen, die Online zur Verfügung stehen.
 
-$$f(x)=x^2$$
+```f(x)=x^2$$```
 
 ### Algorithmen
 
